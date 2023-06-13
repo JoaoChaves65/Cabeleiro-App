@@ -1,10 +1,18 @@
 import { Router } from 'express'
+import { UsersController } from '../controllers/UsersController';
 class UsersRoutes {
     private router: Router;
-    constructor(){
+    private usersController: UsersController;
+    constructor() {
         this.router = Router();
+        this.usersController = new UsersController;
     }
     getRoutes() {
-        this.router.post('/users', )
+        this.router.post(
+            '/users',
+            this.usersController.store.bind(this.usersController),
+        );
+
+        return this.router;
     }
 }
