@@ -9,10 +9,12 @@ class UsersRoutes {
     }
     getRoutes() {
         this.router.post(
-            '/users',
+            '/',
             this.usersController.store.bind(this.usersController),
         );
 
         return this.router;
     }
 }
+
+export {UsersRoutes}
