@@ -1,10 +1,5 @@
 import { prisma } from "../database/prisma";
-
-interface ICreate {
-    name: string,
-    email: string
-    password: string,
-}
+import { ICreate } from "../interfaces/UsersInterface";
 
 class UsersRepository {
     async create({ name, email, password }: ICreate) {
@@ -18,3 +13,5 @@ class UsersRepository {
         return result
     }
 }
+
+export { UsersRepository };
