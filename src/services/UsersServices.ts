@@ -1,3 +1,4 @@
+import { hash } from "bcrypt";
 import { ICreate } from "../interfaces/UsersInterface";
 import { UsersRepository } from "../repositories/UserRepository"
 
@@ -11,11 +12,18 @@ class UsersServices {
     async create({ name, email, password }: ICreate) {
         const findUser = await this.usersRepository.findUserByEmail(email)
 
-        if(findUser){
+        if (findUser) {
             throw new Error('User exists')
         }
 
-        const create = this.usersRepository.create({ name, email, password })
+        const hashPassoword = await hash(password, 10)
+
+        const create = this.usersRepository.create({
+            name,
+            email,
+            password: hashPassoword
+        });
+        return create;
     }
 }
 
