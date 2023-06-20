@@ -18,7 +18,7 @@ class UsersServices {
 
         const hashPassoword = await hash(password, 10)
 
-        const create = this.usersRepository.create({
+        const create = await this.usersRepository.create({
             name,
             email,
             password: hashPassoword
@@ -27,4 +27,4 @@ class UsersServices {
     }
 }
 
-export { UsersRepository };
+export { UsersServices };
