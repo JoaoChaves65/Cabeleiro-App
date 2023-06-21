@@ -25,6 +25,9 @@ class UsersController {
     auth() {
         // Autenticação
     }
+    update(request: Request, response: Response, next: NextFunction) {
+
+    }
 }
 
 export { UsersController };
